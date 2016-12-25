@@ -14,10 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
+from authentication import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'signin/$', views.SignInView.as_view(), name='sign_in'),
+    url(r'signup/$', views.SignUpView.as_view(), name='sign_up'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

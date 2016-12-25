@@ -1,0 +1,12 @@
+<form method="POST">
+{% csrf_token %}
+{% for form in forms %}
+    <p>{{ form }}
+{% endfor %}
+<p><button>Save</button>
+</form>
+{% if messages %}
+    {% for i in messages %}
+        {{ i }}
+    {% endfor %}
+{% endif %}
