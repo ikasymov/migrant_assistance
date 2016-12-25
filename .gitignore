@@ -1,0 +1,16 @@
+virtualenv
+*.pyc
+.idea
+settings_local.py
+settings_prod.py
+*.sqlite3
+*.sqlite3-journal
+*media
+*static
+venv
+*locale
+wsgi_prod.py
+gunicorn.py
+testres.xml
+geckodriver.log
+bower_components
