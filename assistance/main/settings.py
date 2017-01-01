@@ -40,7 +40,8 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 LOCAL_APPS = [
-    'authentication'
+    'authentication',
+    'django_countries',
 ]
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 MIDDLEWARE_CLASSES = [

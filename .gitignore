@@ -14,3 +14,4 @@ gunicorn.py
 testres.xml
 geckodriver.log
 bower_components
+.env
