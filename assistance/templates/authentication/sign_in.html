@@ -1,12 +1,25 @@
+{% extends 'general/base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+{% endblock %}
+{% block content %}
+    {% include 'general/messages.html' %}
 <form method="POST">
 {% csrf_token %}
-{% for form in forms %}
-    <br><p>{{ form }}
-{% endfor %}
-    <button>Save</button>
+    <div class="form-inline">
+            <div class="col-md-2 col-md-offset-5">
+                <div class="col-10">
+                    <p>{{ form.email }}</p>
+        </div>
+                <div class="col-9">
+                    {{ form.password }}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+    </div>
+
 </form>
-{% if messages %}
-    {% for i in messages %}
-        {{ i }}
-    {% endfor %}
-{% endif %}
+{% endblock %}

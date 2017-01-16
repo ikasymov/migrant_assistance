@@ -12,9 +12,9 @@ DATABASES = {
 }
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+    os.path.join(BASE_DIR, "staticfiles")
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 SECRET_KEY = env('SECRET_KEY')
@@ -42,6 +42,7 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     'authentication',
     'django_countries',
+    'widget_tweaks',
 ]
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 MIDDLEWARE_CLASSES = [

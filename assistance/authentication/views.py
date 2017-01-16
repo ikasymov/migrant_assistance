@@ -26,11 +26,6 @@ class SignInView(FormView):
             messages.add_message(self.request, messages.ERROR, self.message_error)
         return super(SignInView, self).form_valid(form)
 
-    def get_context_data(self, **kwargs):
-        context = super(SignInView, self).get_context_data(**kwargs)
-        context['forms'] = SignInForm()
-        return context
-
 
 class SignUpView(FormView):
     form_class = SignupForm
