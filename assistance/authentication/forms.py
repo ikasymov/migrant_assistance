@@ -11,9 +11,10 @@ class SignInForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': _('Ведите пароль'), 'class': 'form-control mb-2 mr-sm-2 mb-sm-0'}))
 
 
-class SignupForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-
-    class Meta:
-        model = User
-        fields = ('email', 'password')
+class SignupForm(forms.Form):
+    email = forms.EmailField(widget=forms.TextInput(
+        attrs={'placeholder': _('Ведите Эл.почту'), 'type': 'email', 'class': 'form-control mb-2 mr-sm-2 mb-sm-0'}))
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={'placeholder': _('Ведите пароль'), 'class': 'form-control mb-2 mr-sm-2 mb-sm-0'}))
+    check_password = forms.CharField(widget=forms.PasswordInput(
+        attrs={'placeholder': _('Ведите пароль еше раз'), 'class': 'form-control mb-2 mr-sm-2 mb-sm-0'}))

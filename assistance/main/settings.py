@@ -7,6 +7,7 @@ environ.Env.read_env()
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE_ROOT = root()
 DEBUG = env('DEBUG')
+ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': env.db()
 }

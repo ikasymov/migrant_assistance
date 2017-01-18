@@ -4,11 +4,12 @@
 </head>
 <body>
 {% if messages %}
-<div class="alert alert-info">
-    {% for i in messages %}
-        {{ i }}
-    {% endfor %}
+ {% for message in messages %}
+<div class="alert alert-{{ message.tags }}">
+        {{ message }}
+
 </div>
+    {% endfor %}
 {% endif %}
 </body>
 </html>
