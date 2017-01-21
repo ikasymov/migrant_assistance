@@ -1,12 +1,11 @@
 # coding= utf-8
-from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import redirect
 from django.views.generic import FormView
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
 from authentication.forms import SignInForm, SignupForm
-from authentication.models import User
+from authentication.models import User, UserManager
 from main.messages import Messages
 
 
@@ -21,7 +20,7 @@ class SignInView(FormView):
         return self.success_url
 
     def form_valid(self, form):
-        user = authenticate(email=form.cleaned_data['email'], password=form.cleaned_data['password'])
+        user = authenticate(**form.cleaned_data)
         if user is not None:
             login(self.request, user)
             messages.add_message(self.request, messages.SUCCESS, self.message_success)
@@ -48,10 +47,8 @@ class SignUpView(FormView):
             messages.add_message(self.request, messages.WARNING, self.message_exist)
             return redirect(self.request.path)
         except User.DoesNotExist:
-            if form.cleaned_data['check_password'] == form.cleaned_data['password']:
-                user = User.objects.create(email=email_value)
-                user.set_password(form.cleaned_data['password'])
-                user.save()
+            if self.request.POST['check_password'] == form.cleaned_data['password']:
+                User.objects.create_user(**form.cleaned_data)
                 messages.add_message(self.request, messages.SUCCESS, self.message_success)
             else:
                 messages.warning(self.request, self.message_error)

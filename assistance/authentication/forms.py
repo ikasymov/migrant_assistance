@@ -16,5 +16,3 @@ class SignupForm(forms.Form):
         attrs={'placeholder': _('Ведите Эл.почту'), 'type': 'email', 'class': 'form-control mb-2 mr-sm-2 mb-sm-0'}))
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={'placeholder': _('Ведите пароль'), 'class': 'form-control mb-2 mr-sm-2 mb-sm-0'}))
-    check_password = forms.CharField(widget=forms.PasswordInput(
-        attrs={'placeholder': _('Ведите пароль еше раз'), 'class': 'form-control mb-2 mr-sm-2 mb-sm-0'}))
