@@ -5,6 +5,8 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Permis
     _user_has_module_perms
 from django.utils.translation import ugettext_lazy as _
 
+from assistant.models import Region
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
@@ -37,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(_('Дата регистрации'), auto_now_add=True)
     is_active = models.BooleanField(verbose_name=_('Активен'), default=True)
     is_staff = models.BooleanField(verbose_name=_('Администратор'), default=False)
-
+    region = models.ForeignKey(Region, verbose_name=_('Регион'), related_name='user_region', blank=True, null=True)
     objects = UserManager()
 
     USERNAME_FIELD = 'email'

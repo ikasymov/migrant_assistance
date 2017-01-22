@@ -44,6 +44,7 @@ LOCAL_APPS = [
     'authentication',
     'django_countries',
     'widget_tweaks',
+    'assistant',
 ]
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 MIDDLEWARE_CLASSES = [
