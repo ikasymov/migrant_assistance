@@ -1,0 +1,10 @@
+{% extends 'general/base.html' %}
+{% block content %}
+    <form method="POST">
+    {% csrf_token %}
+    {{ post_form }}
+    {{ form.type_document }}
+        {{ form.place }}
+    <input type="submit" value="Создать">
+    </form>
+{% endblock %}

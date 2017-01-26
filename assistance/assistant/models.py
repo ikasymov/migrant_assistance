@@ -15,6 +15,9 @@ class Post(models.Model):
     created_date = models.DateTimeField(verbose_name=_('Дата создание'), auto_now=True, blank=True, null=True)
     edited_at = models.CharField(verbose_name=_('Кем редактирован'), max_length=50, blank=True, null=True)
 
+    def __unicode__(self):
+        return self.title
+
     class Meta:
         verbose_name = _('Запись')
         verbose_name_plural = _('Записи')
@@ -22,6 +25,9 @@ class Post(models.Model):
 
 class Region(models.Model):
     name = models.CharField(max_length=50, verbose_name=_('Название'))
+
+    def __unicode__(self):
+        return self.name
 
     class Meta:
         verbose_name = _('Регион')
@@ -34,6 +40,9 @@ class Document(models.Model):
     is_active = models.BooleanField(verbose_name=_('Активность'), default=False)
     type_document = models.CharField(choices=DOCUMENT_CHOICES, max_length=100, verbose_name=_('Вид документа'))
     place = models.ForeignKey(Region, verbose_name=_('Регион'), related_name='document_region')
+
+    def __unicode__(self):
+        return self.post.title
 
     class Meta:
         verbose_name = _('Документ')
