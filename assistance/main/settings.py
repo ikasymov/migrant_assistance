@@ -13,10 +13,10 @@ DATABASES = {
 }
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticfiles")
+    root('staticfiles')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = root('static')
+MEDIA_ROOT = root('media')
 MEDIA_URL = '/media/'
 SECRET_KEY = env('SECRET_KEY')
 LANGUAGE_CODE = 'ru-Ru'
@@ -62,7 +62,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
+            root('templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
